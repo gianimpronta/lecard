@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Lojas LeCard - Rio de Janeiro</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #map {
+            flex: 1;
+            width: 100%;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Customizar popup */
+        .leaflet-popup-content-wrapper {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .popup-content {
+            min-width: 250px;
+        }
+
+        .popup-content h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .popup-content .badge {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.75rem;
+        }
+
+        .popup-content .info-row {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .popup-content .label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .popup-content a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Controles de filtro */
+        .filter-control {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .filter-control h4 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .filter-control input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .filter-control {
+                position: relative;
+                margin: 1rem;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🗺️ Mapa de Lojas LeCard - Rio de Janeiro</h1>
+        <p>Estabelecimentos credenciados para uso do cartão LeCard na cidade do Rio de Janeiro</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalLojas">0</div>
+                <div>Lojas</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="bairrosCount">0</div>
+                <div>Bairros</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="tiposCount">0</div>
+                <div>Tipos</div>
+            </div>
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Carregando mapa das lojas...</p>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- MarkerCluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        // Inicializar mapa centrado no Rio de Janeiro
+        const map = L.map('map').setView([-22.9068, -43.1729], 11);
+
+        // Adicionar camada de tiles (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Criar grupo de clusters para marcadores
+        const markers = L.markerClusterGroup({
+            chunkedLoading: true,
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true
+        });
+
+        // Ícones personalizados por tipo
+        const iconColors = {
+            'Casa De Carnes': '#e74c3c',
+            'Supermercado': '#3498db',
+            'Minimercado': '#2ecc71',
+            'Mercearia': '#f39c12',
+            'Hipermercado': '#9b59b6',
+            'default': '#667eea'
+        };
+
+        function createCustomIcon(tipo) {
+            const color = iconColors[tipo] || iconColors.default;
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="background-color: ${color}; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [25, 25],
+                iconAnchor: [12, 12]
+            });
+        }
+
+        // Carregar dados das lojas
+        fetch('lojas_mapa.json')
+            .then(response => response.json())
+            .then(lojas => {
+                document.getElementById('loading').style.display = 'none';
+
+                // Atualizar estatísticas
+                document.getElementById('totalLojas').textContent = lojas.length;
+                const bairrosUnicos = new Set(lojas.map(l => l.bairro));
+                document.getElementById('bairrosCount').textContent = bairrosUnicos.size;
+                const tiposUnicos = new Set(lojas.map(l => l.tipo));
+                document.getElementById('tiposCount').textContent = tiposUnicos.size;
+
+                // Adicionar marcadores
+                lojas.forEach(loja => {
+                    const marker = L.marker([loja.lat, loja.lng], {
+                        icon: createCustomIcon(loja.tipo)
+                    });
+
+                    const popupContent = `
+                        <div class="popup-content">
+                            <h3>${loja.nome}</h3>
+                            <span class="badge">${loja.tipo}</span>
+                            <div class="info-row">
+                                <span class="label">📍 Endereço:</span><br>
+                                ${loja.endereco}<br>
+                                ${loja.bairro} - ${loja.cep}
+                            </div>
+                            ${loja.telefone ? `<div class="info-row">
+                                <span class="label">📞 Telefone:</span><br>
+                                <a href="tel:${loja.telefone}">${loja.telefone}</a>
+                            </div>` : ''}
+                            ${loja.email ? `<div class="info-row">
+                                <span class="label">📧 Email:</span><br>
+                                <a href="mailto:${loja.email}">${loja.email}</a>
+                            </div>` : ''}
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
+                    markers.addLayer(marker);
+                });
+
+                map.addLayer(markers);
+
+                console.log(`✓ ${lojas.length} lojas carregadas no mapa`);
+            })
+            .catch(error => {
+                document.getElementById('loading').innerHTML = `
+                    <p style="color: red;">❌ Erro ao carregar dados das lojas</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                        ${error.message}
+                    </p>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 1rem;">
+                        Certifique-se de que o arquivo lojas_mapa.json existe
+                    </p>
+                `;
+                console.error('Erro:', error);
+            });
+    </script>
+</body>
+</html>
