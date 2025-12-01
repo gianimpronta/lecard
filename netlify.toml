@@ -1,0 +1,61 @@
+# Configuração do Netlify para o Mapa LeCard
+# Documentação: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Diretório de publicação (raiz do projeto pois index.html está na raiz)
+  publish = "."
+
+  # Comando de build (não necessário para site estático)
+  command = "echo 'Site estático - sem build necessário'"
+
+# Configurações de redirecionamento
+[[redirects]]
+  # SPA fallback - redireciona tudo para index.html se arquivo não existir
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers de segurança e performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Segurança
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Cache para arquivos estáticos
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/lojas_mapa.json"
+  [headers.values]
+    # Cache mais agressivo para dados (1 dia)
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Content-Type = "application/json; charset=utf-8"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Configurações de contexto (produção, preview, etc)
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  environment = { NODE_ENV = "preview" }
+
+[context.branch-deploy]
+  environment = { NODE_ENV = "development" }
+
+# Configurações de plugins (se necessário no futuro)
+# [[plugins]]
+#   package = "@netlify/plugin-sitemap"

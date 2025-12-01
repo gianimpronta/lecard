@@ -2,6 +2,12 @@
 
 Sistema de scraping e visualização de estabelecimentos credenciados LeCard no Rio de Janeiro.
 
+## 🌐 Demo Online
+
+**🚀 Acesse o mapa:** Em deploy no Netlify (URL será adicionada após deploy)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/seu-badge-id/deploy-status)](https://app.netlify.com/sites/seu-site-id/deploys)
+
 ## 📁 Arquivos
 
 ### Dados
@@ -47,31 +53,38 @@ npx http-server -p 8000
 
 Depois acesse: http://localhost:8000
 
-## 🌍 Publicar na Internet
+## 🌍 Deploy
 
-### Opção 1: GitHub Pages (Gratuito)
-1. Crie um repositório no GitHub
-2. Faça upload dos arquivos:
-   - index.html
-   - lojas_mapa.json
-3. Ative GitHub Pages nas configurações
-4. Acesse: https://seu-usuario.github.io/seu-repo
+### ✅ Netlify (Em Produção)
 
-### Opção 2: Netlify (Gratuito)
-1. Crie conta em https://netlify.com
-2. Arraste a pasta do projeto
-3. Pronto! URL gerada automaticamente
+Este projeto está configurado para deploy automático no Netlify:
 
-### Opção 3: Vercel (Gratuito)
-1. Crie conta em https://vercel.com
-2. Import do GitHub ou upload direto
-3. Deploy automático
+- **Deploy automático**: Cada push na branch `main` dispara novo deploy
+- **HTTPS**: SSL/TLS automático
+- **CDN Global**: Carregamento rápido em qualquer lugar do mundo
+- **Formulários**: Suporte nativo (se necessário no futuro)
+
+**Configuração:**
+- Arquivo `netlify.toml` define configurações de build
+- Deploy direto do repositório GitHub
+
+### Outras Opções
+
+**GitHub Pages:**
+- Settings → Pages → Source: main branch
+- URL: `https://gianimpronta.github.io/lecard`
+
+**Vercel:**
+- Import do GitHub
+- Deploy automático similar ao Netlify
 
 ## 📊 Estatísticas
 
-- **443 lojas** no Rio de Janeiro
-- **Tipos**: Supermercados, Açougues, Mercearias, etc.
-- **Dados**: Nome, Endereço, Bairro, CEP, Telefone, Email
+- **423 lojas únicas** no Rio de Janeiro (após remoção de duplicados)
+- **65+ bairros** cobertos
+- **10+ tipos** de estabelecimentos
+- **Dados completos**: Nome, Endereço, Bairro, CEP, Telefone, Email
+- **100% geocodificado**: Todas as lojas com coordenadas GPS precisas
 
 ## 🛠️ Tecnologias
 
@@ -106,9 +119,11 @@ Os dados incluem:
 
 ## 🎨 Features do Mapa
 
-- ✅ Clustering de marcadores (agrupa lojas próximas)
-- ✅ Cores por tipo de estabelecimento
-- ✅ Popups com informações detalhadas
-- ✅ Responsivo (mobile-friendly)
-- ✅ Estatísticas (total de lojas, bairros, tipos)
-- ✅ Zoom e navegação suave
+- ✅ **Busca por endereço**: Digite seu endereço e encontre as 10 lojas mais próximas
+- ✅ **Cálculo de distância**: Distâncias reais em metros/km
+- ✅ **Rota visual**: Linha pontilhada do seu local até a loja
+- ✅ **Clustering**: Agrupa lojas próximas para melhor visualização
+- ✅ **Cores por tipo**: Diferentes cores para cada tipo de estabelecimento
+- ✅ **Popups interativos**: Informações completas ao clicar
+- ✅ **Responsivo**: Funciona perfeitamente em mobile e desktop
+- ✅ **Estatísticas**: Total de lojas, bairros e tipos em tempo real
