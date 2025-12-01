@@ -1,7 +1,45 @@
+# Dependências
 node_modules/
+
+# Credenciais
 .env
-*.json
+
+# Dados brutos e temporários
+lojas_raw.json
+lojas_geocodificadas_temp.json
+lojas_geocodificadas.json
+lojas_todas.txt
+lojas_rio.csv
+lojas_rio.txt
+lojas.txt
+lojas_rio_de_janeiro.csv
+lojas_rio_de_janeiro.txt
+lojas_mapa_original.json
+relatorio-*.json
+
+# Screenshots
+*.png
+
+# Backups
+*.backup
+*.bak
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Manter arquivos essenciais
 !package.json
 !package-lock.json
-lojas_*.csv
-lojas_*.txt
+!lojas_mapa.json
+!lojas_rio_de_janeiro.json
