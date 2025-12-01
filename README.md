@@ -89,9 +89,10 @@ Este projeto está configurado para deploy automático no Netlify:
 ## 🛠️ Tecnologias
 
 - **Scraping**: Playwright
-- **Geocoding**: Nominatim (OpenStreetMap)
+- **Geocoding**: Nominatim (OpenStreetMap) via Netlify Serverless Function
 - **Mapa**: Leaflet.js + MarkerCluster
 - **Design**: CSS moderno e responsivo
+- **Backend**: Netlify Functions (serverless)
 
 ## 📝 Notas
 
@@ -99,6 +100,35 @@ Este projeto está configurado para deploy automático no Netlify:
 - Rate limit: 1 requisição por segundo
 - Checkpoints salvos a cada 50 lojas
 - Mapa funciona offline após carregar dados
+
+### ⚡ Serverless Function (Geocoding Proxy)
+
+O projeto inclui uma Netlify Function que serve como proxy para geocodificação:
+
+**Localização:** `netlify/functions/geocode.js`
+
+**Features:**
+- ✅ Evita bloqueios de CORS/API no navegador
+- ✅ Cache em memória (24 horas)
+- ✅ Rate limiting automático (1 req/segundo)
+- ✅ Headers otimizados para Nominatim
+- ✅ Tratamento de erros robusto
+
+**Endpoint:** `/.netlify/functions/geocode?q=endereco`
+
+**Testar localmente:**
+```bash
+# Instalar Netlify CLI (se não tiver)
+npm install -g netlify-cli
+
+# Rodar em modo dev
+netlify dev
+
+# Testar endpoint
+curl "http://localhost:8888/.netlify/functions/geocode?q=Copacabana"
+```
+
+O mapa usa automaticamente esta função em produção e desenvolvimento.
 
 ## 🔒 Segurança
 

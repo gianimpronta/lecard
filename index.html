@@ -595,14 +595,25 @@
             return R * c;
         }
 
-        // Função para geocodificar endereço
+        // Função para geocodificar endereço usando Netlify Function
         async function geocodificarEndereco(endereco) {
-            const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(endereco + ', Rio de Janeiro, RJ, Brazil')}&format=json&limit=1`;
-            const response = await fetch(url, {
-                headers: { 'User-Agent': 'LeCard-Mapper/1.0' }
-            });
-            const data = await response.json();
-            return data.length > 0 ? data[0] : null;
+            // Use Netlify serverless function as proxy to avoid CORS/API blocking
+            const url = `/.netlify/functions/geocode?q=${encodeURIComponent(endereco)}`;
+
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    console.error('Erro ao geocodificar:', response.status, response.statusText);
+                    return null;
+                }
+
+                const data = await response.json();
+                return data.length > 0 ? data[0] : null;
+            } catch (error) {
+                console.error('Erro na requisição de geocodificação:', error);
+                return null;
+            }
         }
 
         // Função para buscar lojas próximas
