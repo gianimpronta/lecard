@@ -157,3 +157,17 @@ Os dados incluem:
 - ✅ **Popups interativos**: Informações completas ao clicar
 - ✅ **Responsivo**: Funciona perfeitamente em mobile e desktop
 - ✅ **Estatísticas**: Total de lojas, bairros e tipos em tempo real
+
+## 💰 Monetização
+
+O projeto está configurado com **Google AdSense** para monetização:
+
+- 📍 **1 bloco de anúncio** estrategicamente posicionado
+- 🎯 **Responsivo** (adapta desktop/mobile)
+- ✅ **Não intrusivo** (boa experiência do usuário)
+
+**Configuração:** Veja [ADSENSE_SETUP.md](./ADSENSE_SETUP.md) para guia completo de como ativar.
+
+**Estimativa de ganhos:**
+- 100 visitantes/dia: R$ 20-30/mês
+- 1.000 visitantes/dia: R$ 150-300/mês
