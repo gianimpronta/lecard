@@ -1,0 +1,17 @@
+# robots.txt para LeCard Mapa RJ
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lecard.netlify.app/sitemap.xml
+
+# Otimizações para buscadores
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloquear apenas arquivos desnecessários
+Disallow: /node_modules/
+Disallow: /*.json$
