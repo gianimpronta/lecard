@@ -4,9 +4,9 @@ Sistema de scraping e visualização de estabelecimentos credenciados LeCard no 
 
 ## 🌐 Demo Online
 
-**🚀 Acesse o mapa:** Em deploy no Netlify (URL será adicionada após deploy)
+**🚀 Acesse o mapa:** [https://lecard.netlify.app/](https://lecard.netlify.app/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/seu-badge-id/deploy-status)](https://app.netlify.com/sites/seu-site-id/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e5c6a3d6-8f2b-4a5c-9d1e-3f7b8c9d0e1f/deploy-status)](https://app.netlify.com/sites/lecard/deploys)
 
 ## 📁 Arquivos
 
