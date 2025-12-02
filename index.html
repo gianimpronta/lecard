@@ -704,6 +704,43 @@
             maxZoom: 19
         }).addTo(map);
 
+        // Solicitar localização do usuário e centralizar mapa
+        let userLocationMarker = null;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Centralizar mapa na localização do usuário
+                    map.setView([userLat, userLng], 13);
+
+                    // Criar marcador para localização do usuário
+                    userLocationMarker = L.marker([userLat, userLng], {
+                        icon: L.divIcon({
+                            className: 'user-location-marker',
+                            html: '<div style="background-color: #4285F4; width: 20px; height: 20px; border-radius: 50%; border: 4px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.4);"><div style="background-color: rgba(66, 133, 244, 0.3); width: 40px; height: 40px; border-radius: 50%; position: absolute; top: -10px; left: -10px; animation: pulse 2s infinite;"></div></div><style>@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; }}</style>',
+                            iconSize: [20, 20],
+                            iconAnchor: [10, 10]
+                        })
+                    }).addTo(map);
+
+                    userLocationMarker.bindPopup('<strong>📍 Você está aqui</strong>').openPopup();
+
+                    console.log('Localização do usuário obtida:', userLat, userLng);
+                },
+                (error) => {
+                    console.log('Erro ao obter localização:', error.message);
+                    // Mantém a visualização padrão do estado
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+            );
+        }
+
         // Criar grupo de clusters para marcadores
         const markers = L.markerClusterGroup({
             chunkedLoading: true,
