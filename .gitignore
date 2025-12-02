@@ -10,6 +10,10 @@ node_modules/
 .env.local
 .env.production
 
+# Arquivos de monetização (privados)
+ADSENSE_SETUP.md
+MONETIZATION*.md
+
 # ============================================
 # Scripts de processamento (manter)
 # ============================================
