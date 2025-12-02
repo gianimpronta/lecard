@@ -350,6 +350,95 @@
             text-align: center;
         }
 
+        /* Filtros por tipo */
+        .filter-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .filter-section h5 {
+            margin-bottom: 0.75rem;
+            color: #333;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .filter-option:hover {
+            background: #f8f9ff;
+        }
+
+        .filter-option input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .filter-count {
+            color: #999;
+            font-size: 0.75rem;
+        }
+
+        .filter-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .filter-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #f8f9ff;
+            border-color: #667eea;
+        }
+
         /* AdSense Styles */
         .ad-container {
             margin: 1rem 0;
@@ -658,6 +747,18 @@
             </div>
 
             <div id="resultsContainer"></div>
+
+            <!-- Filtro por tipo -->
+            <div class="filter-section">
+                <h5>🏪 Filtrar por tipo</h5>
+                <div class="filter-options" id="filterOptions">
+                    <!-- Será preenchido dinamicamente -->
+                </div>
+                <div class="filter-actions">
+                    <button class="filter-btn" onclick="selecionarTodos()">Selecionar Todos</button>
+                    <button class="filter-btn" onclick="limparTodos()">Limpar Todos</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -677,6 +778,8 @@
         let lojasData = [];
         let searchMarker = null;
         let routeLines = [];
+        let tiposSelecionados = new Set();
+        let allMarkers = [];
 
         // Função para minimizar/expandir painel de busca (mobile)
         function toggleSearchPanel() {
@@ -924,6 +1027,94 @@
             });
         }
 
+        // Funções de filtro por tipo
+        function criarFiltrosTipo(lojas) {
+            // Contar lojas por tipo
+            const contagemTipos = {};
+            lojas.forEach(loja => {
+                contagemTipos[loja.tipo] = (contagemTipos[loja.tipo] || 0) + 1;
+            });
+
+            // Ordenar tipos por contagem (maior primeiro)
+            const tiposOrdenados = Object.entries(contagemTipos)
+                .sort((a, b) => b[1] - a[1]);
+
+            const filterOptions = document.getElementById('filterOptions');
+            let html = '';
+
+            tiposOrdenados.forEach(([tipo, count]) => {
+                const color = iconColors[tipo] || iconColors.default;
+                const checkboxId = `filter-${tipo.replace(/\s+/g, '-')}`;
+
+                // Inicialmente todos selecionados
+                tiposSelecionados.add(tipo);
+
+                html += `
+                    <div class="filter-option">
+                        <input
+                            type="checkbox"
+                            id="${checkboxId}"
+                            value="${tipo}"
+                            checked
+                            onchange="toggleTipo('${tipo.replace(/'/g, "\\\'")}')"
+                        >
+                        <label for="${checkboxId}">
+                            <div class="filter-color" style="background-color: ${color}"></div>
+                            <span>${tipo}</span>
+                            <span class="filter-count">(${count})</span>
+                        </label>
+                    </div>
+                `;
+            });
+
+            filterOptions.innerHTML = html;
+        }
+
+        function toggleTipo(tipo) {
+            if (tiposSelecionados.has(tipo)) {
+                tiposSelecionados.delete(tipo);
+            } else {
+                tiposSelecionados.add(tipo);
+            }
+            aplicarFiltros();
+        }
+
+        function selecionarTodos() {
+            const checkboxes = document.querySelectorAll('#filterOptions input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = true;
+                tiposSelecionados.add(cb.value);
+            });
+            aplicarFiltros();
+        }
+
+        function limparTodos() {
+            const checkboxes = document.querySelectorAll('#filterOptions input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+                tiposSelecionados.delete(cb.value);
+            });
+            aplicarFiltros();
+        }
+
+        function aplicarFiltros() {
+            // Remover todos os marcadores
+            markers.clearLayers();
+
+            // Adicionar apenas marcadores dos tipos selecionados
+            allMarkers.forEach(marker => {
+                if (tiposSelecionados.has(marker.tipo)) {
+                    markers.addLayer(marker);
+                }
+            });
+
+            // Atualizar contagem na estatística
+            const lojasVisiveis = lojasData.filter(l => tiposSelecionados.has(l.tipo));
+            document.getElementById('totalLojas').textContent = lojasVisiveis.length;
+
+            console.log(`Filtro aplicado: ${lojasVisiveis.length} de ${lojasData.length} lojas visíveis`);
+        }
+
         // Carregar dados das lojas
         fetch('lojas_mapa.json')
             .then(response => response.json())
@@ -937,6 +1128,9 @@
                 document.getElementById('cidadesCount').textContent = cidadesUnicas.size;
                 const tiposUnicos = new Set(lojas.map(l => l.tipo));
                 document.getElementById('tiposCount').textContent = tiposUnicos.size;
+
+                // Criar filtros por tipo
+                criarFiltrosTipo(lojas);
 
                 // Adicionar marcadores
                 lojas.forEach(loja => {
@@ -965,7 +1159,9 @@
                     `;
 
                     marker.bindPopup(popupContent);
+                    marker.tipo = loja.tipo; // Armazenar tipo no marcador
                     markers.addLayer(marker);
+                    allMarkers.push(marker);
                 });
 
                 map.addLayer(markers);
