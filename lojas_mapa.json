@@ -252,6 +252,18 @@
     "lng": -42.51937
   },
   {
+    "nome": "Açougue E Mercado Real",
+    "tipo": "Casa De Carnes",
+    "endereco": "Avenida Governador Roberto Silveira, 265, Loja 01",
+    "bairro": "Novo",
+    "cidade": "Bom Jesus do Itabapoana",
+    "cep": "28360-000",
+    "telefone": "(22)3831-3545",
+    "email": "[email protected]",
+    "lat": -21.1329886,
+    "lng": -41.6703647
+  },
+  {
     "nome": "Açougue E Mercearia do Kiko 2",
     "tipo": "Casa De Carnes",
     "endereco": "Rua Dionisio Tavares, 18",
@@ -624,6 +636,30 @@
     "lng": -41.0497141
   },
   {
+    "nome": "Armazém Beer",
+    "tipo": "Mercearia",
+    "endereco": "Rua Getulio Vargas, 224",
+    "bairro": "Abraão",
+    "cidade": "Ilha Grande",
+    "cep": "23968-000",
+    "telefone": "(24)3361-3469",
+    "email": "Não",
+    "lat": -23.1555405,
+    "lng": -44.2344809
+  },
+  {
+    "nome": "Armazém Boca da Ponte",
+    "tipo": "Atacadista",
+    "endereco": "Pc Augusto Peracio, 05, Loja B",
+    "bairro": "Jamapara",
+    "cidade": "Jamapará",
+    "cep": "25887-000",
+    "telefone": "(32)99974-2934",
+    "email": "[email protected]",
+    "lat": -21.7546,
+    "lng": -41.3242
+  },
+  {
     "nome": "Armazém do Pão - Centro",
     "tipo": "Padaria",
     "endereco": "Praça Governador Portela, 103",
@@ -634,6 +670,18 @@
     "email": "[email protected]",
     "lat": -22.0516212,
     "lng": -42.5208564
+  },
+  {
+    "nome": "Armazem do Vale",
+    "tipo": "Minimercado",
+    "endereco": "Rua Maria Aparecida da Silveira, 220",
+    "bairro": "California da Barra",
+    "cidade": "São José do Turvo",
+    "cep": "27165-000",
+    "telefone": "(24)99923-9254",
+    "email": "[email protected]",
+    "lat": -21.7546,
+    "lng": -41.3242
   },
   {
     "nome": "Armazen 67",
@@ -1080,6 +1128,18 @@
     "lng": -41.6171802
   },
   {
+    "nome": "Auto Serviços Venda Nova",
+    "tipo": "Hortifrúti",
+    "endereco": "Rua Principal, 139",
+    "bairro": "Santo Amaro de Campos",
+    "cidade": "Santo Amaro de Campos",
+    "cep": "28140-000",
+    "telefone": "(22)99907-5876",
+    "email": "[email protected]",
+    "lat": -21.7264344,
+    "lng": -41.597497
+  },
+  {
     "nome": "Bar E Mercearia Alcobacinha",
     "tipo": "Mercearia",
     "endereco": "Rua João de Farias, 608",
@@ -1210,6 +1270,18 @@
     "email": "[email protected]",
     "lat": -22.5408565,
     "lng": -44.1661678
+  },
+  {
+    "nome": "Batistão Distribuidora",
+    "tipo": "Atacadista",
+    "endereco": "Rua Rita Batista, 22, Loja A",
+    "bairro": "Campo Lindo",
+    "cidade": "Seropédica",
+    "cep": "23898-081",
+    "telefone": "(21)97384-2348",
+    "email": "[email protected]",
+    "lat": -22.8095607,
+    "lng": -43.6400691
   },
   {
     "nome": "Bazar Lulibar",
@@ -1630,6 +1702,18 @@
     "email": "[email protected]",
     "lat": -22.5408565,
     "lng": -44.1661678
+  },
+  {
+    "nome": "Casa Das Carnes Paciello",
+    "tipo": "Casa De Carnes",
+    "endereco": "R Vereador Antonio Vieira, 54571",
+    "bairro": "Centro",
+    "cidade": "Rio das Flores",
+    "cep": "27660-000",
+    "telefone": "(24)99828-1231",
+    "email": "[email protected]",
+    "lat": -22.1683478,
+    "lng": -43.5858689
   },
   {
     "nome": "Casa de Carne Boi Bom - Rj",
@@ -2448,6 +2532,18 @@
     "lng": -41.3266642
   },
   {
+    "nome": "Cruzeiro de Ouro",
+    "tipo": "Minimercado",
+    "endereco": "R Alberto de Oliveira, 261",
+    "bairro": "Pç Cruzeiro",
+    "cidade": "Rio Bonito",
+    "cep": "28800-000",
+    "telefone": "(21)99734-2349",
+    "email": "[email protected]",
+    "lat": -22.7368566,
+    "lng": -42.5702111
+  },
+  {
     "nome": "Daise da Silva Araujo",
     "tipo": "Padaria",
     "endereco": "Rua Alcides Mourão, 215",
@@ -3142,6 +3238,18 @@
     "email": "Não",
     "lat": -22.4989614,
     "lng": -44.030833
+  },
+  {
+    "nome": "Eta Padaria E Cafeteria",
+    "tipo": "Padaria",
+    "endereco": "Avenida Nossa Senhora do Rosário, 275",
+    "bairro": "Centro",
+    "cidade": "Quatis",
+    "cep": "27410-140",
+    "telefone": "(24)99818-4641",
+    "email": "[email protected]",
+    "lat": -22.4066444,
+    "lng": -44.2577453
   },
   {
     "nome": "Eziel Pedro da Silva",
@@ -4248,6 +4356,18 @@
     "lng": -41.4310334
   },
   {
+    "nome": "Mercadinho Estrela do Bairro",
+    "tipo": "Minimercado",
+    "endereco": "Rua João Marforio, 411",
+    "bairro": "Barra do Pirai",
+    "cidade": "São José do Turvo",
+    "cep": "27165-000",
+    "telefone": "(24)3347-7627",
+    "email": "[email protected]",
+    "lat": -21.7546,
+    "lng": -41.3242
+  },
+  {
     "nome": "Mercadinho Ferreira - Petrópolis",
     "tipo": "Mercearia",
     "endereco": "Rua Professor Stroele, 914",
@@ -4824,6 +4944,30 @@
     "lng": -42.0797594
   },
   {
+    "nome": "Mercado do Loro - Centro",
+    "tipo": "Minimercado",
+    "endereco": "Rua Vereador Frilson Mateu Vieira, Sn",
+    "bairro": "Centro",
+    "cidade": "Varre-Sai",
+    "cep": "28375-000",
+    "telefone": "(22)98111-5389",
+    "email": "[email protected]",
+    "lat": -20.9311337,
+    "lng": -41.8677946
+  },
+  {
+    "nome": "Mercado do Noé",
+    "tipo": "Minimercado",
+    "endereco": "Rua Benedito Rocha da Silva, Sn",
+    "bairro": "Laranjais",
+    "cidade": "Laranjais",
+    "cep": "28580-000",
+    "telefone": "(22)3862-1101",
+    "email": "[email protected]",
+    "lat": -21.7546,
+    "lng": -41.3242
+  },
+  {
     "nome": "Mercado do Rui",
     "tipo": "Minimercado",
     "endereco": "Rua Paulo Rola, 567",
@@ -5254,6 +5398,18 @@
     "email": "[email protected]",
     "lat": -22.4282772,
     "lng": -42.9660923
+  },
+  {
+    "nome": "Mercado Hort Tudo",
+    "tipo": "Minimercado",
+    "endereco": "R Alberto de Oliveira, 170",
+    "bairro": "Pç Cruzeiro",
+    "cidade": "Rio Bonito",
+    "cep": "28800-000",
+    "telefone": "(22)99936-2018",
+    "email": "[email protected]",
+    "lat": -22.7368566,
+    "lng": -42.5702111
   },
   {
     "nome": "Mercado Ideal - Centro",
@@ -5916,6 +6072,18 @@
     "lng": -41.9744104
   },
   {
+    "nome": "Mercado Santa Filomena",
+    "tipo": "Minimercado",
+    "endereco": "R Deputado Francelino Bastos Franca, 137, Galpao1",
+    "bairro": "Centro",
+    "cidade": "Varre-Sai",
+    "cep": "28375-000",
+    "telefone": "(22)98800-8472",
+    "email": "[email protected]",
+    "lat": -20.930453,
+    "lng": -41.8666749
+  },
+  {
     "nome": "Mercado São Fernando 10",
     "tipo": "Minimercado",
     "endereco": "R Maranhao, 3356",
@@ -6204,6 +6372,18 @@
     "lng": -41.7970964
   },
   {
+    "nome": "Mercearia Algo Mais",
+    "tipo": "Minimercado",
+    "endereco": "Rua Vereador Antonio Vieira, 54518",
+    "bairro": "Centro",
+    "cidade": "Rio das Flores",
+    "cep": "27660-000",
+    "telefone": "(24)99266-6337",
+    "email": "[email protected]",
+    "lat": -22.1683478,
+    "lng": -43.5858689
+  },
+  {
     "nome": "Mercearia Bastos",
     "tipo": "Mercearia",
     "endereco": "Estrada Valença A Barra do Pirai, 27478",
@@ -6274,6 +6454,18 @@
     "email": "[email protected]",
     "lat": -22.4461288,
     "lng": -44.3104266
+  },
+  {
+    "nome": "Mercearia Carvalho-Rj",
+    "tipo": "Mercearia",
+    "endereco": "Rua Barrao de Ipiabas, 33",
+    "bairro": "Barra do Pirai",
+    "cidade": "Ipiabás",
+    "cep": "27170-000",
+    "telefone": "(24)2437-1178",
+    "email": "[email protected]",
+    "lat": -20.8956337,
+    "lng": -41.9332211
   },
   {
     "nome": "Mercearia Cristal",
@@ -6430,6 +6622,18 @@
     "email": "[email protected]",
     "lat": -21.3338326,
     "lng": -42.1364702
+  },
+  {
+    "nome": "Mercearia E Açougue Sabiá",
+    "tipo": "Minimercado",
+    "endereco": "Rua do Areal, 119",
+    "bairro": "Usina Santo Isabel",
+    "cidade": "Bom Jesus do Itabapoana",
+    "cep": "28360-000",
+    "telefone": "(22)3835-1575",
+    "email": "[email protected]",
+    "lat": -21.090552,
+    "lng": -41.7808736
   },
   {
     "nome": "Mercearia E Açougue Santa Cruz",
@@ -7104,6 +7308,18 @@
     "lng": -44.1893812
   },
   {
+    "nome": "Minimercado E Panificadora Mac",
+    "tipo": "Minimercado",
+    "endereco": "Rodovia Rj 145 Parte, 47118",
+    "bairro": "Taboas",
+    "cidade": "Rio das Flores",
+    "cep": "27665-000",
+    "telefone": "(24)98121-9423",
+    "email": "[email protected]",
+    "lat": -22.1683478,
+    "lng": -43.5858689
+  },
+  {
     "nome": "Minimercado Ribeiro Cunha",
     "tipo": "Minimercado",
     "endereco": "Rua Major Fajardo, S/N",
@@ -7258,6 +7474,18 @@
     "email": "[email protected]",
     "lat": -22.5816526,
     "lng": -44.1711705
+  },
+  {
+    "nome": "Narully",
+    "tipo": "Hortifrúti",
+    "endereco": "Rua Pastor Manoel Joaquim Carneiro, 21",
+    "bairro": "Pião",
+    "cidade": "Pião",
+    "cep": "25884-000",
+    "telefone": "(22)98142-1890",
+    "email": "[email protected]",
+    "lat": -21.215816,
+    "lng": -41.879813
   },
   {
     "nome": "Naruto Conveniência",
@@ -8112,6 +8340,18 @@
     "lng": -42.35817
   },
   {
+    "nome": "Padaria Oliveira - Bacaxá",
+    "tipo": "Padaria",
+    "endereco": "Rua Professor Souza, 1000, Loja C",
+    "bairro": "Bacaxá",
+    "cidade": "Bacaxá",
+    "cep": "28993-000",
+    "telefone": "(22)98833-2281",
+    "email": "[email protected]",
+    "lat": -22.8914274,
+    "lng": -42.4731909
+  },
+  {
     "nome": "Padaria Pães E Cia Ltda",
     "tipo": "Padaria",
     "endereco": "Rua Caetano Furquim, 155",
@@ -8254,6 +8494,18 @@
     "email": "[email protected]",
     "lat": -22.4614714,
     "lng": -44.4543713
+  },
+  {
+    "nome": "Padaria Salete",
+    "tipo": "Padaria",
+    "endereco": "Rua Terezinha Evangelista de Oliveira, 19, A",
+    "bairro": "Jardim Central",
+    "cidade": "Seropédica",
+    "cep": "23890-001",
+    "telefone": "(21)97586-2155",
+    "email": "[email protected]",
+    "lat": -22.7438887,
+    "lng": -43.6991998
   },
   {
     "nome": "Padaria Sanlauret",
@@ -8410,6 +8662,18 @@
     "email": "[email protected]",
     "lat": -22.327568,
     "lng": -41.7520179
+  },
+  {
+    "nome": "Pães E Cia Loja 2",
+    "tipo": "Padaria",
+    "endereco": "Rua Professora Alice Kury da Silva, 121",
+    "bairro": "Abraão",
+    "cidade": "Ilha Grande",
+    "cep": "23968-000",
+    "telefone": "(24)3369-5909",
+    "email": "[email protected]",
+    "lat": -23.1555405,
+    "lng": -44.2344809
   },
   {
     "nome": "Pai E Filho Depósito",
@@ -8604,6 +8868,18 @@
     "lng": -41.0318503
   },
   {
+    "nome": "Paraibano Supermercado",
+    "tipo": "Supermercado",
+    "endereco": "Avenida Randolfo Penna, 765, Loja 13",
+    "bairro": "Jatobá",
+    "cidade": "Salutaris",
+    "cep": "25855-000",
+    "telefone": "(24)2263-7514",
+    "email": "[email protected]",
+    "lat": -22.0637596,
+    "lng": -42.0648701
+  },
+  {
     "nome": "Paraibano Supermercado - Grama",
     "tipo": "Supermercado",
     "endereco": "Avenida Randolfo Penna, 888",
@@ -8686,6 +8962,18 @@
     "email": "[email protected]",
     "lat": -22.8785961,
     "lng": -42.3834237
+  },
+  {
+    "nome": "Peixaria do João",
+    "tipo": "Peixaria",
+    "endereco": "R Firmino Francisco Leite, Sn, Loja 16",
+    "bairro": "Pinhão",
+    "cidade": "Tanguá",
+    "cep": "24890-000",
+    "telefone": "(21)96658-1789",
+    "email": "[email protected]",
+    "lat": -22.7353777,
+    "lng": -42.7202272
   },
   {
     "nome": "Peixaria Liberdade",
@@ -9214,6 +9502,18 @@
     "email": "[email protected]",
     "lat": -22.5100094,
     "lng": -41.9490581
+  },
+  {
+    "nome": "Rafinha Supermercados - Centro",
+    "tipo": "Supermercado",
+    "endereco": "Rua Xv de Novembro, 49",
+    "bairro": "Centro",
+    "cidade": "Bom Jesus do Itabapoana",
+    "cep": "28360-000",
+    "telefone": "(22)99881-2877",
+    "email": "[email protected]",
+    "lat": -21.090552,
+    "lng": -41.7808736
   },
   {
     "nome": "Rafinha Supermercados - Fiteiro",
@@ -9862,6 +10162,18 @@
     "email": "[email protected]",
     "lat": -22.5465288,
     "lng": -44.173391
+  },
+  {
+    "nome": "Smart Supermercado",
+    "tipo": "Supermercado",
+    "endereco": "Praça Doutor Teixeira Brandão, 100",
+    "bairro": "Centro",
+    "cidade": "Quatis",
+    "cep": "27410-190",
+    "telefone": "(24)3353-2526",
+    "email": "[email protected]",
+    "lat": -22.4066444,
+    "lng": -44.2577453
   },
   {
     "nome": "Solar Supermercado",
