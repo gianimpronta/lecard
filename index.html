@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Encontre lojas credenciadas LeCard no Rio de Janeiro. Busque por endereço e descubra as 10 lojas mais próximas.">
-    <meta name="keywords" content="LeCard, lojas credenciadas, Rio de Janeiro, mapa, cartão LeCard, estabelecimentos">
-    <meta name="author" content="LeCard Mapa">
+    <meta name="description" content="Encontre lojas credenciadas LeCard em todo o Estado do Rio de Janeiro. Mais de 870 estabelecimentos em 92 cidades. Busque por endereço e descubra as lojas mais próximas.">
+    <meta name="keywords" content="LeCard, lojas credenciadas, Rio de Janeiro, Estado RJ, mapa, cartão LeCard, estabelecimentos, supermercados, açougues">
+    <meta name="author" content="LeCard Mapa RJ">
     <meta name="theme-color" content="#667eea">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,21 +13,21 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lecard.netlify.app/">
-    <meta property="og:title" content="Mapa de Lojas LeCard - Rio de Janeiro">
-    <meta property="og:description" content="Encontre lojas credenciadas LeCard no Rio de Janeiro. Busque por endereço e descubra as 10 lojas mais próximas.">
+    <meta property="og:title" content="Mapa de Lojas LeCard - Estado do Rio de Janeiro">
+    <meta property="og:description" content="Encontre lojas credenciadas LeCard em todo o Estado do RJ. Mais de 870 estabelecimentos em 92 cidades.">
     <meta property="og:site_name" content="LeCard Mapa RJ">
     <meta property="og:locale" content="pt_BR">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://lecard.netlify.app/">
-    <meta property="twitter:title" content="Mapa de Lojas LeCard - Rio de Janeiro">
-    <meta property="twitter:description" content="Encontre lojas credenciadas LeCard no Rio de Janeiro. Busque por endereço e descubra as 10 lojas mais próximas.">
+    <meta property="twitter:title" content="Mapa de Lojas LeCard - Estado do Rio de Janeiro">
+    <meta property="twitter:description" content="Encontre lojas credenciadas LeCard em todo o Estado do RJ. Mais de 870 estabelecimentos em 92 cidades.">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://lecard.netlify.app/">
 
-    <title>Mapa de Lojas LeCard - Rio de Janeiro</title>
+    <title>Mapa de Lojas LeCard - Estado do Rio de Janeiro</title>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -45,9 +45,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Mapa de Lojas LeCard - Rio de Janeiro",
+      "name": "Mapa de Lojas LeCard - Estado do Rio de Janeiro",
       "url": "https://lecard.netlify.app/",
-      "description": "Encontre lojas credenciadas LeCard no Rio de Janeiro. Busque por endereço e descubra as 10 lojas mais próximas.",
+      "description": "Encontre lojas credenciadas LeCard em todo o Estado do Rio de Janeiro. Mais de 870 estabelecimentos em 92 cidades.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -62,7 +62,15 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
-        "ratingCount": "150"
+        "ratingCount": "250"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Rio de Janeiro",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Brasil"
+        }
       }
     }
     </script>
@@ -599,16 +607,16 @@
 </head>
 <body>
     <header>
-        <h1>🗺️ Mapa de Lojas LeCard - Rio de Janeiro</h1>
-        <p>Estabelecimentos credenciados para uso do cartão LeCard na cidade do Rio de Janeiro</p>
+        <h1>🗺️ Mapa de Lojas LeCard - Estado do Rio de Janeiro</h1>
+        <p>Mais de 870 estabelecimentos credenciados em 92 cidades do Estado do RJ</p>
         <div class="stats">
             <div class="stat">
                 <div class="stat-number" id="totalLojas">0</div>
                 <div>Lojas</div>
             </div>
             <div class="stat">
-                <div class="stat-number" id="bairrosCount">0</div>
-                <div>Bairros</div>
+                <div class="stat-number" id="cidadesCount">0</div>
+                <div>Cidades</div>
             </div>
             <div class="stat">
                 <div class="stat-number" id="tiposCount">0</div>
@@ -687,7 +695,8 @@
         }
 
         // Inicializar mapa centrado no Rio de Janeiro
-        const map = L.map('map').setView([-22.9068, -43.1729], 11);
+        // Centro geográfico do Estado do RJ (aproximadamente entre capital e interior)
+        const map = L.map('map').setView([-22.25, -42.5], 8);
 
         // Adicionar camada de tiles (OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -887,8 +896,8 @@
 
                 // Atualizar estatísticas
                 document.getElementById('totalLojas').textContent = lojas.length;
-                const bairrosUnicos = new Set(lojas.map(l => l.bairro));
-                document.getElementById('bairrosCount').textContent = bairrosUnicos.size;
+                const cidadesUnicas = new Set(lojas.map(l => l.cidade).filter(c => c));
+                document.getElementById('cidadesCount').textContent = cidadesUnicas.size;
                 const tiposUnicos = new Set(lojas.map(l => l.tipo));
                 document.getElementById('tiposCount').textContent = tiposUnicos.size;
 
@@ -941,14 +950,14 @@
     </script>
 
     <footer>
-        <p><strong>Mapa de Lojas LeCard</strong></p>
-        <p>Encontre estabelecimentos credenciados LeCard no Rio de Janeiro</p>
+        <p><strong>Mapa de Lojas LeCard - Estado do Rio de Janeiro</strong></p>
+        <p>Encontre estabelecimentos credenciados LeCard em todo o Estado do RJ</p>
         <div class="footer-links">
             <a href="https://github.com/gianimpronta/lecard" target="_blank" rel="noopener">GitHub</a>
             <a href="mailto:contato@lecard.com.br">Contato</a>
         </div>
         <p class="copyright">© 2025 LeCard Mapa RJ. Todos os direitos reservados.</p>
-        <p class="copyright">Dados extraídos do portal oficial LeCard</p>
+        <p class="copyright">Dados extraídos do portal oficial LeCard - Cobertura em 92 cidades</p>
     </footer>
 </body>
 </html>

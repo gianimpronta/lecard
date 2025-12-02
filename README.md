@@ -1,6 +1,6 @@
-# 🗺️ Mapa de Lojas LeCard - Rio de Janeiro
+# 🗺️ Mapa de Lojas LeCard - Estado do Rio de Janeiro
 
-Sistema de scraping e visualização de estabelecimentos credenciados LeCard no Rio de Janeiro.
+Sistema de scraping e visualização de estabelecimentos credenciados LeCard em todo o Estado do Rio de Janeiro.
 
 ## 🌐 Demo Online
 
@@ -80,11 +80,12 @@ Este projeto está configurado para deploy automático no Netlify:
 
 ## 📊 Estatísticas
 
-- **423 lojas únicas** no Rio de Janeiro (após remoção de duplicados)
-- **65+ bairros** cobertos
-- **10+ tipos** de estabelecimentos
-- **Dados completos**: Nome, Endereço, Bairro, CEP, Telefone, Email
-- **100% geocodificado**: Todas as lojas com coordenadas GPS precisas
+- **879 lojas geocodificadas** em todo o Estado do Rio de Janeiro
+- **92 cidades** cobertas (de Angra dos Reis a Volta Redonda)
+- **11 tipos** de estabelecimentos
+- **Dados completos**: Nome, Endereço, Cidade, Bairro, CEP, Telefone, Email
+- **100% das lojas no mapa** possuem coordenadas GPS precisas
+- **Top 3 cidades**: Petrópolis (107), Barra Mansa (61), São João da Barra (47)
 
 ## 🛠️ Tecnologias
 
